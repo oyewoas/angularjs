@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="demoApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+    <title>Using Angular Directives and Databinding</title>
+</head>
+
+<body>
+    <!-- <form action="">
+        <label for="">Name</label>
+        <input type="text" data-ng-model="name"> {{name}}
+    </form>
+    <!-- Iterating with ng-init ng-repeat directive just as in <li> using html tag -->
+    <!-- <div class="container" data-ng-controller="simpleController"> -->
+    <!-- <h3>Looping with ng init and ng repeat directive</h3> -->
+    <!-- When there is a typing in the input the repeated objects will be filtered -->
+    <!-- <ul>
+        <li data-ng-repeat="cust in customers| filter:name| orderBy:'city'">{{cust.name| uppercase}}-{{cust.city}}</li>
+    </ul> -->
+
+    <!-- </div> -->
+    <div>
+        <div data-ng-view=""></div>
+    </div>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+
+    <script>
+        var demoApp = angular.module('demoApp', ['ngRoute']);
+
+        demoApp.config(function($routeProvider) {
+            $routeProvider
+                .when('/view1', {
+                    controller: 'simpleController',
+                    templateUrl: 'partials/view1.html'
+                })
+                .when('/view2', {
+                    controller: 'simpleController',
+                    templateUrl: 'partials/view2.html'
+                })
+                .otherwise({
+                    redirectTo: '/view1'
+                });
+        });
+        demoApp.controller('simpleController', function($scope) {
+            $scope.customers = [{
+                name: 'Oyewo Ayo',
+                city: 'kano'
+            }, {
+                name: 'Samuel',
+                city: 'ibadan'
+            }, {
+                name: 'Victor',
+                city: 'lagos'
+            }];
+            $scope.addCustomer = function() {
+                $scope.customers.push({
+                    name: $scope.newCustomer.name,
+                    city: $scope.newCustomer.city
+                });
+            };
+
+        });
+    </script>
+
+
+</body>
+
+</html>

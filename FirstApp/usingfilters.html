@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Using Angular Directives and Databinding</title>
+</head>
+
+<body data-ng-init="customers=[{name:'Samuel',city:'Lagos'}, {name:'Samuel',city:'Oyo'},{name:'David',city:'Kano'}]">
+    <form action="">
+        <label for="">Name</label>
+        <input type="text" data-ng-model="name"> {{name}}
+    </form>
+    <!-- Iterating with ng-init ng-repeat directive just as in <li> using html tag -->
+    <div class="container">
+        <h3>Looping with ng init and ng repeat directive</h3>
+        <!-- When there is a typing in the input the repeated objects will be filtered -->
+        <ul>
+            <li data-ng-repeat="cust in customers| filter:name| orderBy:'city'">{{cust.name| uppercase}}-{{cust.city}}</li>
+        </ul>
+
+    </div>
+    <script src="js/angular.min.js"></script>
+</body>
+
+</html>

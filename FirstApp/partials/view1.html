@@ -1,0 +1,22 @@
+<div class="container">
+    <h2>VIEW 1</h2>
+
+    Name:<br/>
+    <input type="text" data-ng-model="filter.name">
+
+
+    <!-- Iterating with ng-init ng-repeat directive just as in <li> using html tag -->
+
+    <!-- When there is a typing in the input the repeated objects will be filtered -->
+    <br/>
+    <ul>
+        <li data-ng-repeat="cust in customers| filter:filter.name ">{{cust.name| uppercase}}-{{cust.city}}</li>
+    </ul>
+
+    <br/> Customer Name:<br/>
+    <input type="text" data-ng-model="newCustomer.name"><br> Customer city:<br/>
+    <input type="text" data-ng-model="newCustomer.city"><br>
+    <button data-ng-click="addCustomer()">Add Customer</button><br>
+    <a href="#!/view2">View2</a>
+
+</div>
